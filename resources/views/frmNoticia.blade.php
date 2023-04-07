@@ -22,8 +22,8 @@
         </div>
 
       <div class="mb-3 mt-3">
-          <label for="noticia" class="form-label">Conteúdo</label>
-          <textarea type="text" class="form-control" id="texto" value="{{$noticia->texto}}" name="texto"></textarea>
+          <label for="texto" class="form-label">Conteúdo</label>
+          <textarea type="textarea" class="form-control" id="texto" name="texto">{{$noticia->texto}}</textarea>
       </div>
 
       <div class="mb-3">
