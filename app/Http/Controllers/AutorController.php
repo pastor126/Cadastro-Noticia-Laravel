@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Autor;
 
 class AutorController extends Controller
@@ -26,6 +27,21 @@ class AutorController extends Controller
             } else {
                 $autor = Autor::find($request->input('id'));
             }
+
+        if ($request->hasFile('arquivo')) {
+            $arquivo = $request->arquivo;
+            var_dump($arquivo);
+            $figurasalva= $arquivo -> store('public/imagens');
+            var_dump($figurasalva);
+            $figurasalva= explode("/",$figurasalva);
+            $tamanho= count($figurasalva);
+            if($autor->figura != ""){
+             Storage::delete("public/imagens/$autor->figura");   
+            }
+            $autor->figura = $figurasalva[$tamanho - 1];
+          
+        }
+
             $autor->nome = $request->input('nome');
             $autor->cpf = $request->input('cpf');
             $autor->save();

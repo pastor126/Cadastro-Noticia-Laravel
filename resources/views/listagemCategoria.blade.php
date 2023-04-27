@@ -13,6 +13,7 @@
       <thead>
         <tr>
           <th>ID</th>
+          <th></th>
           <th>Descrição</th>
           <th></th>
           <th></th>
@@ -24,6 +25,11 @@
         @foreach($categorias as $categoria)
         <tr>
           <td>{{$categoria->id}}</td>
+          <td>
+            @if($categoria->figura != "")
+              <img style="width:4rem;height:4rem;object-fit:cover" src="/storage/imagens/{{$categoria->figura}}">
+            @endif
+          </td>
           <td>{{$categoria->categoria}}</td>
           <td><a class='btn btn-primary' href='editar/{{$categoria->id}}'>Editar</a>  </td>
           <td><a class='btn btn-danger' href='excluir/{{$categoria->id}}'>Excluir</a>  </td>

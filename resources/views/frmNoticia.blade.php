@@ -2,7 +2,12 @@
 
 @section('conteudo')
 <h3>Cadastro de Noticia</h3>
-    <form action="{{url('noticia/salvar')}}" method="post">
+
+  @if($noticia->figura != "")
+    <img style="width:150px;height:150px;object-fit:cover;border-radius:20px;border:1px solid gray;padding: 0.25rem" src="/storage/imagens/{{$noticia->figura}}">
+    @endif
+
+    <form action="{{url('noticia/salvar')}}" method="post" enctype="multipart/form-data">
     @csrf
       <div class="mb-3">
           <label for="id" class="form-label">ID</label>
@@ -38,6 +43,11 @@
       <div class="mb-3">
           <label for="noticia" class="form-label">Data</label>
           <input type="date" class="form-control" id="data" value="{{$noticia->data}}" name="data">
+      </div>
+
+       <div class="mb-3">
+          <label for="arquivo" class="form-label">Imagem</label>
+          <input type="file" class="form-control" id="arquivo" name="arquivo" accept="image/*">
       </div>
 
       <button class="btn btn-primary" type="submit" name="button">Salvar</button>

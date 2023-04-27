@@ -14,6 +14,7 @@
           <th>Data</th>
           <th>Categoria</th>
           <th>Título</th>
+          <th>Imagem</th>
           <th>Conteúdo</th>
           <th>Autor</th>
         </tr>
@@ -27,6 +28,11 @@
           <td>{{$noticia->data}}</td>
           <td>{{$noticia->categoria->categoria}}</td>
           <td>{{$noticia->titulo}}</td>
+          <td>
+            @if($noticia->figura != "")
+              <img style="width:4rem;height:4rem;object-fit:cover" src="/storage/imagens/{{$noticia->figura}}">
+            @endif
+          </td>
           <td>{{$noticia->texto}}</td>
           <td>{{$noticia->autor->nome}}</td>
           <td><a class='btn btn-primary' href='editar/{{$noticia->id}}'>Editar</a>  </td>

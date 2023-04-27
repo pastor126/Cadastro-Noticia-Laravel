@@ -12,6 +12,7 @@
       <thead>
         <tr>
           <th>ID</th>
+          <th>Foto</th>
           <th>Nome</th>
           <th>CPF</th>
           <th></th>
@@ -23,6 +24,11 @@
         @foreach($autors as $autor)
         <tr>
           <td>{{$autor->id}}</td>
+          <td>
+            @if($autor->figura != "")
+              <img style="width:4rem;height:4rem;object-fit:cover" src="/storage/imagens/{{$autor->figura}}">
+            @endif
+          </td>
           <td>{{$autor->nome}}</td>
           <td>{{$autor->cpf}}</td>
           <td><a class='btn btn-primary' href='editar/{{$autor->id}}'>Editar</a>  </td>
